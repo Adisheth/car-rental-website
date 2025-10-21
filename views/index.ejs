@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxeDrive - Premium Car Rental</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="modal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <%- include('./includes/header.ejs') %>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <img src="image/hero-background.jpg" alt="Hero Background">
+            <div class="hero-overlay"></div>
+            <div class="hero-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">Premium Car Rental</span>
+                    <span class="title-line">Experience</span>
+                </h1>
+                <p class="hero-subtitle">Discover luxury, comfort, and style with our premium fleet of vehicles. From business trips to weekend getaways, we have the perfect car for every journey.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Premium Cars</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Cities</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support</span>
+                    </div>
+                </div>
+            </div>
+            
+           <!-- Quick Booking Form -->
+<section class="booking-form-section">
+    <div class="booking-form-container">
+        <div class="booking-form">
+            <h3>Find Your Perfect Car</h3>
+            <form class="quick-booking">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Pickup Location</label>
+                        <select class="form-control">
+                            <option>Mumbai - Bandra Kurla Complex</option>
+                            <option>Delhi - Connaught Place</option>
+                            <option>Bangalore - Electronic City</option>
+                            <option>Chennai - T. Nagar</option>
+                            <option>Hyderabad - HITEC City</option>
+                            <option>Pune - Koregaon Park</option>
+                            <option>Kolkata - Salt Lake</option>
+                            <option>Ahmedabad - SG Highway</option>
+                            <option>Jaipur - C-Scheme</option>
+                            <option>Goa - Panaji</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Dropoff Location</label>
+                        <select class="form-control">
+                            <option>Same as pickup</option>
+                            <option>Mumbai - Airport</option>
+                            <option>Delhi - IGI Airport</option>
+                            <option>Bangalore - Kempegowda Airport</option>
+                            <option>Chennai - Airport</option>
+                            <option>Hyderabad - Shamshabad Airport</option>
+                            <option>Pune - Airport</option>
+                            <option>Kolkata - Netaji Subhash Airport</option>
+                            <option>Ahmedabad - Airport</option>
+                            <option>Jaipur - Airport</option>
+                            <option>Goa - Dabolim Airport</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Pickup Date</label>
+                        <input type="date" class="form-control" id="pickupDate">
+                    </div>
+                    <div class="form-group">
+                        <label>Return Date</label>
+                        <input type="date" class="form-control" id="returnDate">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary btn-large">
+                    <i class="fas fa-search"></i>
+                    Search Available Cars
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Featured Cars Section -->
+    <section class="featured-cars" id="cars">
+        <div class="section-background">
+            <img src="image/hero-background.jpg" alt="Cars Background">
+            <div class="section-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Vehicles</h2>
+                <p>Explore our premium collection of luxury and performance vehicles</p>
+            </div>
+            
+            <!-- Car Filters -->
+            <div class="car-filters">
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-category="all">All Cars</button>
+                    <button class="filter-tab" data-category="luxury">Luxury</button>
+                    <button class="filter-tab" data-category="sports">Sports</button>
+                    <button class="filter-tab" data-category="suv">SUV</button>
+                    <button class="filter-tab" data-category="electric">Electric</button>
+                </div>
+                <div class="filter-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search cars..." id="carSearch">
+                    </div>
+                    <select class="filter-select" id="priceFilter">
+                        <option value="">Price Range</option>
+                        <option value="0-100">₹0 - ₹10,000</option>
+                        <option value="100-200">₹10,000 - ₹20,000</option>
+                        <option value="200-500">₹20,000 - ₹50,000</option>
+                        <option value="500+">₹50,000+</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Car Grid -->
+            <div class="car-grid" id="carGrid">
+                <% if (typeof featuredCars !== 'undefined' && featuredCars.length > 0) { %>
+                    <% featuredCars.forEach(function(car){ %>
+                        <div class="car-card" data-category="<%= car.category %>" data-price="<%= car.price %>" data-transmission="<%= car.transmission %>" data-fuel="<%= car.fuel %>">
+                            <% if (car.badge) { %>
+                                <div class="car-badge"><%= car.badge %></div>
+                            <% } %>
+                            <div class="car-image">
+                                <img src="<%= car.image %>" alt="<%= car.name %>">
+                            </div>
+                            <div class="car-info">
+                                <h3><%= car.name %></h3>
+                                <div class="car-price">₹<%= car.price %> <span class="period">/day</span></div>
+                                <div class="car-actions">
+                                    <button class="btn-secondary" onclick="openBookingModalFor('<%= car.id %>')">Quick View</button>
+                                    <button class="btn-primary book-now" data-car-id="<%= car.id %>" onclick="openBookingModalFor('<%= car.id %>')">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p>No featured cars available right now.</p>
+                <% } %>
+            </div>
+
+            <div class="section-footer">
+                <button class="btn-secondary btn-large" onclick="window.location.href='/cars'">
+                    View All Cars
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Premium Services</h2>
+                <p>Experience luxury at every step of your journey</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Comprehensive Insurance</h3>
+                    <p>Full coverage protection with multiple insurance options to suit your needs and budget.</p>
+                    <ul>
+                        <li>Collision Damage Waiver</li>
+                        <li>Theft Protection</li>
+                        <li>Personal Accident Insurance</li>
+                        <li>Roadside Assistance</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3>Concierge Service</h3>
+                    <p>Personal assistance for all your rental needs, from booking to return.</p>
+                    <ul>
+                        <li>Personal Travel Assistant</li>
+                        <li>Vehicle Delivery & Pickup</li>
+                        <li>Custom Itinerary Planning</li>
+                        <li>VIP Treatment</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Multiple Locations</h3>
+                    <p>Convenient pickup and drop-off locations across major cities and airports.</p>
+                    <ul>
+                        <li>10+ Premium Locations</li>
+                        <li>Airport Terminals</li>
+                        <li>City Centers</li>
+                        <li>Hotel Partnerships</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support for any assistance you may need.</p>
+                    <ul>
+                        <li>Live Chat Support</li>
+                        <li>Emergency Hotline</li>
+                        <li>Mobile App Assistance</li>
+                        <li>Multilingual Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loyalty Program Section -->
+    <section class="loyalty-program">
+        <div class="container">
+            <div class="loyalty-content">
+                <div class="loyalty-text">
+                    <h2>LuxeDrive Rewards</h2>
+                    <p>Join our exclusive loyalty program and earn points with every rental. Unlock premium benefits, exclusive discounts, and VIP treatment.</p>
+                    
+                    <div class="loyalty-tiers">
+                        <div class="tier">
+                            <div class="tier-icon bronze">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="tier-info">
+                                <h4>Bronze</h4>
+                                <p>5% discount + priority support</p>
+                            </div>
+                        </div>
+                        <div class="tier">
+                            <div class="tier-icon silver">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="tier-info">
+                                <h4>Silver</h4>
+                                <p>10% discount + free upgrades</p>
+                            </div>
+                        </div>
+                        <div class="tier">
+                            <div class="tier-icon gold">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="tier-info">
+                                <h4>Gold</h4>
+                                <p>15% discount + concierge service</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary btn-large">
+                        Join Rewards Program
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                
+                <div class="loyalty-visual">
+                    <div class="points-card">
+                        <div class="card-header">
+                            <h3>Your Points</h3>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="points-balance">
+                            <span class="points-number">2,450</span>
+                            <span class="points-label">Points</span>
+                        </div>
+                        <div class="points-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <span>550 points to Silver</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Real experiences from our valued customers</p>
+            </div>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial-card active">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Exceptional service and premium vehicles. The BMW I rented was in perfect condition and the booking process was seamless. Highly recommended!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="/placeholder.svg?height=60&width=60" alt="John Smith">
+                        <div class="author-info">
+                            <h4>John Smith</h4>
+                            <span>Business Executive</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Amazing experience! The Tesla Model S was a dream to drive. The staff was professional and the entire process was hassle-free."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="/placeholder.svg?height=60&width=60" alt="Sarah Johnson">
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <span>Marketing Director</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-car"></i>
+                        <span>LuxeDrive</span>
+                    </div>
+                    <p>Premium car rental experience with luxury vehicles and exceptional service.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="cars.html">Browse Cars</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="insurance.html">Insurance</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Long-term Rental</a></li>
+                        <li><a href="#">Corporate Solutions</a></li>
+                        <li><a href="#">Chauffeur Service</a></li>
+                        <li><a href="#">Event Rentals</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                        <p><i class="fas fa-envelope"></i> info@luxedrive.in</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Bandra Kurla Complex, Mumbai</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LuxeDrive. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                    <a href="cookie-policy.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

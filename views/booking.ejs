@@ -1,0 +1,9 @@
+<h1>Booking Page</h1>
+<p>Selected Car: <span id="carName"></span></p>
+
+<script>
+  const car = JSON.parse(localStorage.getItem("selectedCar"));
+  if (car) {
+    document.getElementById("carName").textContent = car.name;
+  }
+</script>

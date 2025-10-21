@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxeDrive - Support</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+   <%- include('includes/header.ejs') %>
+
+    <!-- Support Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Customer Support</h2>
+                <p>We are here to help you 24/7 for all your car rental needs.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>24/7 Helpline</h3>
+                    <p>Call our dedicated helpline anytime for immediate assistance.</p>
+                    <p><strong>+91 98765 43210</strong></p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Support</h3>
+                    <p>Drop us an email and we’ll get back to you within 2 hours.</p>
+                    <p><strong>support@luxedrive.in</strong></p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Live Chat</h3>
+                    <p>Connect with our agents instantly through our live chat feature.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Visit Us</h3>
+                    <p>Come to our nearest branch for in-person support.</p>
+                    <p><strong>Bandra Kurla Complex, Mumbai</strong></p>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <h3>Need Help?</h3>
+                <p>Fill out the form below and our team will contact you shortly.</p>
+                <form style="max-width: 500px; margin: auto;">
+                    <input type="text" placeholder="Your Name" class="form-control" required>
+                    <input type="email" placeholder="Your Email" class="form-control" required>
+                    <textarea placeholder="Your Message" class="form-control" rows="4" required></textarea>
+                    <button type="submit" class="btn-primary btn-full">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-car"></i>
+                        <span>LuxeDrive</span>
+                    </div>
+                    <p>Premium car rental experience with luxury vehicles and exceptional service.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="cars.html">Browse Cars</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="insurance.html">Insurance</a></li>
+                        <li><a href="support.html">Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Long-term Rental</a></li>
+                        <li><a href="#">Corporate Solutions</a></li>
+                        <li><a href="#">Chauffeur Service</a></li>
+                        <li><a href="#">Event Rentals</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                        <p><i class="fas fa-envelope"></i> info@luxedrive.in</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Bandra Kurla Complex, Mumbai</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 LuxeDrive. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

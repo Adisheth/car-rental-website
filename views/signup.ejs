@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up - LuxeDrive</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+  <%- include('./includes/header.ejs') %>
+
+  <section class="auth-section">
+    <div class="auth-container">
+      <div class="auth-box">
+        <h2>Create Account</h2>
+
+        <!-- ✅ Directly posts form data to backend -->
+        <form class="auth-form" id="signupForm" action="/api/register" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" name="firstName" class="form-control" placeholder="First name" required />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" name="lastName" class="form-control" placeholder="Last name" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" class="form-control" placeholder="Enter your email" required />
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" name="phone" class="form-control" placeholder="Enter your phone" required />
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Create password" required />
+          </div>
+
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" class="form-control" placeholder="Confirm password" required />
+          </div>
+
+          <div class="form-options">
+            <label class="checkbox">
+              <input type="checkbox" required />
+              <span class="checkmark"></span>
+              I agree to the <a href="/terms-of-service">Terms of Service</a> and
+              <a href="/privacy-policy">Privacy Policy</a>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary btn-full">Create Account</button>
+
+          <div class="auth-divider">
+            <span>or continue with</span>
+          </div>
+
+          <div class="social-auth">
+            <button type="button" class="btn-social">
+              <i class="fab fa-google"></i> Google
+            </button>
+            <button type="button" class="btn-social">
+              <i class="fab fa-facebook"></i> Facebook
+            </button>
+          </div>
+
+          <p class="auth-switch">
+            Already have an account? <a href="/signin">Sign in</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

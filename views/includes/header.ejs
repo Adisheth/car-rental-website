@@ -1,0 +1,41 @@
+
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-car"></i>
+                <span>LuxeDrive</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="/" class="nav-link active">Home</a>
+                <a href="/cars" class="nav-link">Cars</a>
+                <a href="/locations" class="nav-link">Locations</a>
+                <a href="/insurance" class="nav-link">Insurance</a>
+                <a href="/support" class="nav-link">Support</a>
+                <span class="nav-indicator" id="nav-indicator"></span>
+                <% if (locals.user && locals.user.isAdmin) { %>
+                    <a href="/dashboard" class="nav-link">Dashboard</a>
+                <% } %>
+            </div>
+            <div class="nav-actions">
+                <% if (!locals.user) { %>
+                    <!-- Guest Menu -->
+                    <div class="guest-menu">
+                        <a href="/signin" class="btn-secondary">Sign In</a>
+                        <a href="/signup" class="btn-primary">Sign Up</a>
+                    </div>
+                <% } else { %>
+                    <!-- User Menu -->
+                    <div class="nav-actions">
+                        <% if (locals.user.isAdmin) { %>
+                            <a href="/dashboard" class="btn-primary">Dashboard</a>
+                        <% } %>
+                        <a href="/logout" class="btn-secondary">Logout</a>
+                    </div>
+                <% } %>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
