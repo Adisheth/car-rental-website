@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    options {
+        skipDefaultCheckout(true)
+    }
+
     stages {
 
         stage('Clean Workspace') {
@@ -11,7 +15,8 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                echo 'Checkout completed'
+                git branch: 'main',
+                    url: 'https://github.com/Adisheth/car-rental-website'
             }
         }
 
@@ -23,15 +28,16 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'echo "This is a Test" > test-result.txt'
+                sh '''
+                echo "This is a Test" > test-result.txt
+                '''
             }
         }
 
         stage('Deploy') {
             steps {
                 sh '''
-                mkdir -p /usr/local/opt/nginx/html
-                cp test-result.txt /usr/local/opt/nginx/html/
+                cp test-result.txt /opt/homebrew/var/www/
                 '''
             }
         }
